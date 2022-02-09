@@ -1,12 +1,36 @@
 import { createStore } from 'vuex'
 
-export default createStore({
-  state: {
+const store=createStore({
+  state:{
+    title:"",
+    notes:[]
   },
-  mutations: {
+  getters:{
+    totalNotes(state){
+      return state.notes.length;
+    }
   },
-  actions: {
+  mutations:{
+    SAVE_NOTE(state,title){
+      console.log(title)
+      state.notes.push(title);
+    }
   },
-  modules: {
+  actions:{
+    saveNote({commit},title){
+      commit('SAVE_NOTE',title)
+    }
   }
-})
+});
+export default store;
+
+// export default createStore({
+//   state: {
+//   },
+//   mutations: {
+//   },
+//   actions: {
+//   },
+//   modules: {
+//   }
+// })
